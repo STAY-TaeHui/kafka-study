@@ -1,0 +1,11 @@
+server:
+  port: 8001
+
+spring:
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+
+logging:
+  level:
+    com.study.kafka: debug
