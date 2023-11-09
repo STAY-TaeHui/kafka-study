@@ -2,6 +2,7 @@ package com.study.kafka.user.service.impl;
 
 import com.study.kafka.user.messaging.UserCommands;
 import com.study.kafka.user.sdo.UserCdo;
+import com.study.kafka.user.sdo.UserUdo;
 import com.study.kafka.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,5 +18,17 @@ public class UserServiceImpl implements UserService {
         String userId = userCdo.getUserId();
         userCommands.send(userId);
         return userId;
+    }
+
+    @Override
+    public String login(UserUdo userUdo)
+    {
+        userUdo.getLastLoginDate();
+    }
+
+    @Override
+    public String logout(UserUdo userUdo)
+    {
+        return null;
     }
 }

@@ -12,17 +12,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class UserCdo implements JsonSerializable {
+public class UserUdo implements JsonSerializable {
 
     private String userId;
-    private LocalDateTime createdDate;
-    public static UserCdo sample() {
-        return new UserCdo("hong", LocalDateTime.now());
-    }
+    private LocalDateTime lastLoginDate;
+    private LocalDateTime lastLogoutDate;
 
-    public static void main(String[] args) {
-        SamplePrinter.println(sample());
-    }
 
     @Override
     public String toString() {
