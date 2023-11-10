@@ -15,9 +15,12 @@ import lombok.NoArgsConstructor;
 public class UserCdo implements JsonSerializable {
 
     private String userId;
+    private String loginFlag;
     private LocalDateTime createdDate;
+    private LocalDateTime lastLoginDate;
+    private LocalDateTime lastLogoutDate;
     public static UserCdo sample() {
-        return new UserCdo("hong", LocalDateTime.now());
+        return new UserCdo("hong", "N", LocalDateTime.now(), null, null);
     }
 
     public static void main(String[] args) {

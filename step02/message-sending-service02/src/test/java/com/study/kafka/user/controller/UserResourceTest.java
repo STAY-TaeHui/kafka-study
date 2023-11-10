@@ -2,6 +2,7 @@ package com.study.kafka.user.controller;
 
 import static java.util.stream.IntStream.rangeClosed;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -32,7 +33,7 @@ class UserResourceTest {
         rangeClosed(1, requestCount).forEach(value -> executorService.submit(() -> {
             try {
                 String userId = "user-" + value;
-                userResource.register(new UserCdo(userId));
+                userResource.register(new UserCdo(userId, "N", LocalDateTime.now(), null, null));
             } finally {
                 countDownLatch.countDown();
             }

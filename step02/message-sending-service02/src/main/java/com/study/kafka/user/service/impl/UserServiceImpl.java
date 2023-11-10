@@ -1,6 +1,7 @@
 package com.study.kafka.user.service.impl;
 
 import com.study.kafka.user.messaging.UserCommands;
+import com.study.kafka.user.messaging.publisher.UserCommandPublisher;
 import com.study.kafka.user.sdo.UserCdo;
 import com.study.kafka.user.sdo.UserUdo;
 import com.study.kafka.user.service.UserService;
@@ -16,6 +17,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public String register(UserCdo userCdo) {
         String userId = userCdo.getUserId();
+        userCommands = new UserCommandPublisher();
         userCommands.send(userId);
         return userId;
     }
@@ -23,7 +25,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public String login(UserUdo userUdo)
     {
-        userUdo.getLastLoginDate();
+        userCommands.loginPublish(userUdo);
+        return userUdo.getLastLoginDate().toString();
     }
 
     @Override
